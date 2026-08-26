@@ -64,7 +64,7 @@ endif()
 
 # Only build the documentation if we can find Sphinx.
 find_package(Sphinx)
-if(SPHINX_FOUND)
+if(SPHINX_FOUND AND EXISTS "${CMAKE_CURRENT_SOURCE_DIR}/docs/CMakeLists.txt")
   add_subdirectory("docs")
 endif()
 
