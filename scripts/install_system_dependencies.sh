@@ -23,7 +23,7 @@ sudo apt-get install -y \
   libgmock-dev \
   libgtest-dev \
   liblua5.2-dev \
-  libpcl-all-dev \
+  libpcl-dev \
   libprotobuf-dev \
   protobuf-compiler \
   ros-noetic-gazebo-ros-pkgs \
