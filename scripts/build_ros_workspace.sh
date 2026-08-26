@@ -31,9 +31,13 @@ if [[ ! -f "$ABSEIL_INSTALL_DIR/lib/cmake/absl/abslConfig.cmake" ]]; then
   cmake --install "$ABSEIL_BUILD_DIR"
 fi
 
-CMAKE_PREFIX_PATH_ENV="$WORKSPACE_DIR/install_isolated:$ABSEIL_INSTALL_DIR:${CMAKE_PREFIX_PATH:-}"
+# 不继承用户之前 source 过的其他 ROS 工作空间。否则 rospack/catkin 会把
+# 其他项目中的同名包一起加入搜索路径，导致“Multiple packages found”。
+ROS_INSTALL_DIR="/opt/ros/noetic"
+CMAKE_PREFIX_PATH_ENV="$WORKSPACE_DIR/install_isolated:$ABSEIL_INSTALL_DIR:$ROS_INSTALL_DIR"
 CMAKE_PREFIX_PATH_CMAKE="${CMAKE_PREFIX_PATH_ENV//:/;}"
 export CMAKE_PREFIX_PATH="$CMAKE_PREFIX_PATH_ENV"
+export ROS_PACKAGE_PATH="$WORKSPACE_DIR/src:$ROS_INSTALL_DIR/share"
 
 # CMake 会缓存失败的 *_DIR-NOTFOUND；清掉失败的消息包缓存后才能在同一台机器
 # 上重试，否则即使依赖已经安装，旧缓存仍会让配置阶段继续失败。

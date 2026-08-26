@@ -62,6 +62,8 @@ source /opt/ros/noetic/setup.bash
 
 首次编译会花费几分钟。正常情况下，终端会看到类似以下信息：
 
+`build_ros_workspace.sh` 会自动隔离当前终端中其他 ROS 工作空间的环境变量，因此即使之前 source 过其他项目，也不会把它们的同名包加入本项目构建。
+
 ```text
 Spawned active_slam_robot at x=-3.00 y=-4.70 yaw=0.00
 ```
