@@ -1,12 +1,23 @@
-# This repository tracks the indoor mapping demo, not the retained upstream
-# Cartographer checkout or optional third-party planners beside it.
-/*
-!/.gitignore
-!/indoor_cartographer_demo/
-!/indoor_cartographer_demo/**
-!/run_indoor_mapping_demo.sh
+# Build products and local ROS runtime data.
+ros_workspace/build_isolated/
+ros_workspace/devel_isolated/
+ros_workspace/install_isolated/
+ros_workspace/logs/
+ros_workspace/.catkin_workspace
+third_party/build/
+third_party/install/
+.ros/
 
+# Python and editor caches.
 **/__pycache__/
 *.pyc
 *.pyo
 *.log
+.cache/
+.vscode/
+.idea/
+
+# Local map exports and temporary files.
+*.bag
+*.pbstream
+*.swp
